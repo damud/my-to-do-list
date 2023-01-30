@@ -47,3 +47,16 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
     display: flex;
     justify-content: space-between;
 }
+
+.tick {
+    padding: 10px;
+}
+
+.tick path {
+    fill: none;
+    stroke: currentColor;
+    stroke-miterlimit: 10;
+    stroke-width: 32;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
