@@ -7,6 +7,8 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
 
+console.log(email, password, confirmPassword);
+
   const viewLogin = (status) => {
    
     setError(null);
@@ -19,7 +21,13 @@ const Auth = () => {
       setError("Make sure password match!");
       return
     }
-    await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`)
+    const response = await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`, {
+      method: "POST",
+      headers: {"Content-Type" : "applicatin/json"},
+      body: JSON.stringify({ email, password}), 
+    })
+    const data = await response.json();
+    console.log(data);
   }
   
   return (
@@ -27,9 +35,21 @@ const Auth = () => {
       <div className="auth-container-box">
       <form>
         <h2>{isLogIn ? "Please log in" : "Please sing up!"}</h2>
-        <input type="email" placeholder="email" />
-        <input type="password" placeholder="password" />
-        {!isLogIn && <input type="password" placeholder="confirm password" />}
+        <input 
+        type="email" 
+        placeholder="email" 
+        onChange={(e) => setEmail(e.target.value)}
+        />
+        <input 
+        type="password" 
+        placeholder="password" 
+        onChange={(e) => setPassword(e.target.value)}
+        />
+        {!isLogIn && <input 
+        type="password" 
+        placeholder="confirm password" 
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        />}
         <input type="submit" className="create" onClick={(e) => handleSubmit(e, isLogIn ? "login" : "signup")} />
         {error && <p>{error}</p>}
       </form>
