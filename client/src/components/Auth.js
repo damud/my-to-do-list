@@ -31,9 +31,9 @@ const Auth = () => {
         style={{backgroundColor : isLogIn ? "rgb(255, 255, 255)" : "rgb(188, 188, 188)"}}
         >Log In</button>
       </div>
-      </div>
-      </div>
-    )
+    </div>
+ </div>
+  )
 }
 
 export default Auth
