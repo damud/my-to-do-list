@@ -1,16 +1,17 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 const Auth = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const [isLogIn, setIsLogin] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
 
-console.log(email, password, confirmPassword);
+console.log(cookies);
 
   const viewLogin = (status) => {
-   
     setError(null);
     setIsLogin(status);
   }
@@ -23,18 +24,25 @@ console.log(email, password, confirmPassword);
     }
     const response = await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`, {
       method: "POST",
-      headers: {"Content-Type" : "applicatin/json"},
-      body: JSON.stringify({ email, password}), 
+      headers: {"Content-Type" : "application/json"},
+      body: JSON.stringify({ email, password }), 
     })
     const data = await response.json();
-    console.log(data);
+    if (data.detail) {
+      setError(data.detail);
+    } else {
+      setCookie("Email", data.email);
+      setCookie("AuthToken", data.token);
+
+      window.location.reload();
+    }
   }
   
   return (
     <div className="auth-container">
       <div className="auth-container-box">
       <form>
-        <h2>{isLogIn ? "Please log in" : "Please sing up!"}</h2>
+        <h2>{isLogIn ? "Please log in" : "Please sign up!"}</h2>
         <input 
         type="email" 
         placeholder="email" 

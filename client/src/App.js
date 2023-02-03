@@ -2,12 +2,14 @@ import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem";
 import {useEffect, useState} from "react";
 import Auth from "./components/Auth";
+import { useCookies } from "react-cookie";
+
 
 const App = () => {
-  const userEmail = "dan@test.pl"
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const authToken = cookies.AuthToken;
+  const userEmail = cookies.Email;  
   const [tasks, setTasks] = useState(null)
- 
-  const authToken = false;
  
   const getData = async () => {
    
@@ -24,7 +26,7 @@ const App = () => {
     if (authToken) {
       getData()
     }} 
-    , [])
+    ,)
   console.log(tasks)
 
   // Sort by date
