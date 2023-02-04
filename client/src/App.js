@@ -9,7 +9,7 @@ const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const authToken = cookies.AuthToken;
   const userEmail = cookies.Email;  
-  const [tasks, setTasks] = useState(null)
+  const [tasks, setTasks] = useState(null);
  
   const getData = async () => {
    
@@ -26,8 +26,7 @@ const App = () => {
     if (authToken) {
       getData()
     }} 
-    ,)
-  console.log(tasks)
+    , [])
 
   // Sort by date
   const sortedTasks =tasks?.sort((a,b) => new Date(a.date) - new Date(b.date));
@@ -38,8 +37,10 @@ const App = () => {
       {authToken && 
       <>
       <ListHeader listName={"🌴 Holiday tick list"} getData={getData} />
+      <p className="user-email">Welcome back {userEmail}</p>
       {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
       </>}
+      <p className="copyright">© Code with 💗 in Poland</p>
       </div>
   );
 }
