@@ -150,6 +150,7 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
     padding: 40px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+    z-index: 1000;
 }
 
 .modal .form-title-container{
@@ -218,15 +219,26 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
 }
 
 .outer-bar {
+    position: relative;
     width: 200px;
-    height: 14px;
+    height: 20px;
     background-color: rgb(216, 216,216);
     border-radius: 7px;
     overflow: hidden;
 }
 
 .inner-bar {
-    height: 14px;
+    height: 20px;
+}
+
+.info-bar {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .task-title {

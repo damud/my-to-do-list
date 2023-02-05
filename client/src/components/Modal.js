@@ -20,7 +20,6 @@ const Modal = ({mode, setShowModal, getData, task}) => {
         body: JSON.stringify(data)
       })
       if (response.status === 200) {
-        console.log("Worked");
         setShowModal(false)
         getData();
       }
@@ -65,7 +64,7 @@ const handleChange = (e) => {
           <button onClick={() => setShowModal(false)}>X</button>
         </div>
 <form>
-  <input
+  <input 
   required
   maxLenght={30}
   placeholder="Your task goes here"
@@ -74,7 +73,7 @@ const handleChange = (e) => {
   onChange={handleChange} 
   />
   <br />
-  <label for="range">Drag to select your current progress</label>
+  <label htmlFor="range">Drag to select your current progress</label>
   <input
   required
   type="range"
