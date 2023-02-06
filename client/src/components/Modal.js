@@ -67,7 +67,7 @@ const handleChange = (e) => {
   <input 
   required
   maxLenght={30}
-  placeholder="Your task goes here"
+  placeholder="Your task goes here (must between 1 and 30 characters)"
   name="title"
   value={data.title}
   onChange={handleChange} 
