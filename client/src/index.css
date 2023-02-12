@@ -8,13 +8,14 @@ body {
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 .app {
-background-color: rgb(255,255,255);
 box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px, rgba(0, 0, 0, 0.08) 0 0 0 1px;
 border-radius: 10px;
 padding: 10px;
 width: 800px;
 margin-top: 50px;
 }
+
+
 
 .button-container, .info-container {
     display: flex;
@@ -91,12 +92,14 @@ margin-top: 50px;
     color: rgb(255, 255, 255);
   }  
 
+
   .input {
     margin: 11px 0;
     padding: 12px 16px;
     border-radius: 12px;
     border: 1.5px solid rgb(230, 232, 236);
-  }
+  } 
+
 /* List Header */
 
 .list-header {
@@ -117,8 +120,24 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
     justify-content: space-between;
 }
 
-.tick {
+/* Icons SVG */
+
+.tick, .undone {
     padding: 10px;
+}
+
+.undone path {
+    fill-opacity:1;
+    fill:#fff
+}
+
+.undone g {
+    fill-opacity:1;
+}
+
+.undone circle {
+    fill-opacity:1;
+    fill:#d33;
 }
 
 .tick path {
@@ -181,7 +200,7 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
     display: flex;
     justify-content: center;
     margin: 5px;
-}
+} 
 
 .auth-container-box {
     width: 500px;
@@ -208,10 +227,20 @@ border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
     color: rgb(35, 38, 47);
 }
 
-.copyright, .user-email {
+.info-message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copyright, .user-email, .task-total {
     font-size: 13px;
     margin: 10px;
-    color: rgb(114,114,114);
 }
 
 .user-email {

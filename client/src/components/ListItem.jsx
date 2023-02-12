@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TickIcon from './TickIcon';
 import ProgressBar from './ProgressBar';
 import Modal from './Modal';
+import UndoneIcon from './UndoneIcon';
 
 const ListItem = ({task, getData }) => {
   const [showModal, setShowModal] = useState(false);
@@ -22,7 +23,7 @@ const ListItem = ({task, getData }) => {
     <li className="list-item">
 
       <div className="info-container">
-        <TickIcon />
+      {task.progress === 100 ? <TickIcon /> : <UndoneIcon />}
        <p className="task-title">{task.title}</p> 
        <ProgressBar progress={task.progress} />
       </div>
